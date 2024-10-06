@@ -1,16 +1,12 @@
-from flask import Flask, render_template, request
+from db_instance import get_db
+import services
+import services.journal_service
 
-app = Flask(__name__)
-app.config['SERVER_NAME'] = 'subdomain-test-phi.vercel.app'
+db = get_db()
 
-@app.route('/', subdomain='<subdomain>')
-def subdomain_route(subdomain):
-    return f'Hello from subdomain: {subdomain}'
+# Hw8NYH8yYaInwwir4ZYz
 
-@app.route('/', defaults={'subdomain': None})
-@app.route('/', subdomain='<subdomain>')
-def index(subdomain):
-    if subdomain:
-        return f'Hello from subdomain: {subdomain}'
-    return render_template('index.html')
+
+journal = services.journal_service.get_journal('Hw8NYH8yYaInwwir4ZYz')
+print(journal.volumes[0].issues[0].title)
 

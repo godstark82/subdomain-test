@@ -1,7 +1,6 @@
 from flask import Flask
 
 
-# Hw8NYH8yYaInwwir4ZYz
 
 
 app = Flask(__name__)
